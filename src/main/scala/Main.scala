@@ -1,5 +1,9 @@
-@main def hello(): Unit =
-  println("Hello world!")
-  println(msg)
+import org.qrai.etldb.{database}
 
-def msg = "I was compiled by Scala 3. :)"
+@main def hello(): Unit =
+  val db = database.create[String]("test")
+  db.commit(
+    db.insert("hello")
+  )
+  println(db)
+
